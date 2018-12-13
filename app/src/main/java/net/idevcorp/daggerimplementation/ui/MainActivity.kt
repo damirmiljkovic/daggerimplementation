@@ -27,9 +27,7 @@ class MainActivity : DaggerAppCompatActivity() {
     }
 
     private fun addLoginFragment() {
-        loginFragment.onButtonClickListener = {
-            addUserDetailsFragment()
-        }
+        loginFragment.setOnButtonClickListener { addUserDetailsFragment() }
         supportFragmentManager.beginTransaction().replace(layoutBinding.activityMainContainer.id, loginFragment)
             .commit()
     }

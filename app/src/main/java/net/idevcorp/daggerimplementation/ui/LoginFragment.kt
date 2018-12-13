@@ -11,7 +11,7 @@ import net.idevcorp.daggerimplementation.databinding.FragmentLoginBinding
 
 class LoginFragment : DaggerFragment(), LoginView {
     private var layoutBinding: FragmentLoginBinding? = null
-    var onButtonClickListener: (() -> Unit)? = null
+    private var onButtonClickListener: (() -> Unit)? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         layoutBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
@@ -21,5 +21,9 @@ class LoginFragment : DaggerFragment(), LoginView {
 
     override fun onButtonClicked() {
         onButtonClickListener?.invoke()
+    }
+
+    public fun setOnButtonClickListener(mListener: () -> Unit) {
+        onButtonClickListener = mListener
     }
 }
